@@ -1,0 +1,190 @@
+\documentclass[a4paper, landscape , 8pt]{scrartcl}
+
+% use language german
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, ngerman]{babel} % \selectlanguage{english} if  needed
+\usepackage{lmodern} % use modern latin fonts
+
+% format
+\usepackage{geometry}
+\geometry{top=1.2cm,left=0.4cm,right=0.4cm}
+
+%autor
+\usepackage{authblk}
+
+% math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+
+% graphic
+\usepackage{graphicx}
+\graphicspath{{graphic/}} 
+
+%colors
+\usepackage{xcolor}
+
+% Multi Columns
+\usepackage{multicol}
+
+%compact items
+\usepackage{paralist}
+
+%define header and footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[RO]{Zindel Marius}
+\fancyhead[LO]{\TITLE}
+\fancyfoot[RO]{29.08.2020}
+\fancyfoot[LO]{Created with \LaTeX}
+\renewcommand\headrulewidth{0pt}
+\renewcommand\footrulewidth{0pt}
+\headsep = -9pt
+\footskip = 0pt
+\textheight = 563pt
+
+%define section color and size
+\addtokomafont{section}{\color{sectioncolor}\small\rule{\linewidth}{.5pt}\vspace{-2pt}\\}
+\addtokomafont{subsection}{\color{subsectioncolor}\small}
+\addtokomafont{subsubsection}{\color{subsubsectioncolor}\small}
+
+%no section numbers
+\setcounter{secnumdepth}{0}
+
+%define section spacing
+\RedeclareSectionCommands[ 
+	afterindent = false, 
+	beforeskip = 0pt, 
+	afterskip = .1pt 
+	]{section,subsection,subsubsection}
+
+%define color
+\definecolor{sectioncolor}{RGB}{1, 101, 163}
+\definecolor{subsectioncolor}{RGB}{1, 101, 163}
+\definecolor{subsubsectioncolor}{RGB}{0, 0, 0}
+\definecolor{b}{RGB}{0, 120, 255} %Default highlite color
+\definecolor{p}{RGB}{0, 43, 54} %Dark page color
+\definecolor{t}{RGB}{131, 148, 150} %Dark text color
+\definecolor{darkgreen}{RGB}{0,150,0}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{DarkPurple}{rgb}{0.4, 0.1, 0.4}
+\definecolor{DarkCyan}{rgb}{0.0, 0.5, 0.4}
+\definecolor{LightLime}{rgb}{0.3, 0.5, 0.4}
+\definecolor{Blue}{rgb}{0.0, 0.0, 1.0}
+\definecolor{h}{RGB}{1, 101, 163}
+
+% Code Listings
+\usepackage{listings}
+\usepackage{color}
+\usepackage{beramono}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\definecolor{bluekeywords}{rgb}{0,0,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{redstrings}{rgb}{0.64,0.08,0.08}
+\definecolor{xmlcomments}{rgb}{0.5,0.5,0.5}
+\definecolor{types}{rgb}{0.17,0.57,0.68}
+
+\lstdefinestyle{visual-studio-style}{
+	language=[Sharp]C,
+	basicstyle=\ttfamily\scriptsize,
+	columns=flexible,
+	showstringspaces=false,
+	basicstyle=\footnotesize\ttfamily, 
+	commentstyle=\color{greencomments},
+	morekeywords={partial, var, value, get, set},
+	keywordstyle=\bfseries\color{bluekeywords},
+	stringstyle=\color{redstrings},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=4,
+	numbers=none,
+	numberstyle=\tiny\color{black},
+	frame=none,
+	showspaces=false,
+	showtabs=false,
+	escapeinside={£}{£},
+}
+
+\lstdefinestyle{cevelop-style}{
+	language=C++,
+	basicstyle=\ttfamily\scriptsize,
+	columns=flexible,
+	showstringspaces=false,     
+	basicstyle=\footnotesize\ttfamily, 
+	keywordstyle=\bfseries\color{DarkPurple},
+	commentstyle=\color{LightLime},
+	stringstyle=\color{Blue}, 
+	escapeinside={£}{£}, % latex scope within code      
+	breaklines=true,
+	breakatwhitespace=true,
+	showspaces=false,
+	showtabs=false,
+	tabsize=4,
+	morekeywords={include,ifndef,define},
+	numbers=none,
+	numberstyle=\tiny\color{black},
+	frame=none,
+}
+
+\lstdefinestyle{eclipse-style}{
+	language=C,
+	showstringspaces=false,     
+	basicstyle=\ttfamily\scriptsize,
+	keywordstyle=\color{blue}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+	commentstyle=\color{darkgreen}\ttfamily,
+	escapeinside={£}{£}, % latex scope within code      
+	breaklines=true,
+	breakatwhitespace=true,
+	showspaces=false,
+	showtabs=false,
+	tabsize=4,
+	morekeywords={length},
+	numbers=none,
+	numberstyle=\tiny\color{black},
+	frame=top,
+}
+\lstset{style=eclipse-style}
+
+% Theorems \begin{mytheo}{title}{label}
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\newtcbtheorem[number within=section]{definiton}{Definition}%
+{fonttitle=\bfseries}{def}
+\newtcbtheorem[number within=section]{remember}{Merke}%
+{fonttitle=\bfseries}{rem}
+\newtcbtheorem[number within=section]{hint}{Hinweis}%
+{fonttitle=\bfseries}{hnt}
+
+% new section -> new page
+% \let\stdsection\section
+% \renewcommand\section{\clearpage\stdsection}
+
+% Front page
+\newcommand{\AUTHOR}{Marius Zindel}
+\newcommand{\INSTITUTE}{Hochschule für Technik Rapperswil}
+
+%dotted rule
+\usepackage{dashrule}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\newcommand{\drule}[3][0]{
+	\tikz[baseline]{\path[decoration={markings,
+	mark=between positions 0 and 1 step 2*#3
+	with {\node[fill, circle, minimum width=#3, inner sep=0pt, anchor=south west] {};}},postaction={decorate}]  (0,#1) -- ++(#2,0);}}
+
+
+%no indentation
+\setlength{\parindent}{0cm}
